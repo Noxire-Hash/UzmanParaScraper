@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-class UzmanParaScraper:
+class UPSCORE:
     "This is a scraper for UzmanPara you need to provide a stock name to get the data example: user_stock='AEFES'"
 
     def __init__(self, user_stock: str):
@@ -108,7 +108,8 @@ class UzmanParaScraper:
     def create_dump(self, func):
         """Creates a dump file with the data"""
         data = func()
-        open("dump.txt", "w").write(data)
+        with open("dump.txt", "w", encoding="utf-8") as file:
+            file.write(data)
         return data
 
     def goto_stock(self):
