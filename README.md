@@ -5,9 +5,9 @@ UzmanParaScraper is a Python-based web scraper designed to extract stock data fr
 ## Features
 
 - **Scrape Stock Data**: Retrieve stock data by providing a stock name.
-- **Find All Classes**: Extract all CSS classes associated with the stock.
-- **Find All IDs**: Extract all HTML IDs associated with the stock.
-- **Determine Stock State**: Identify whether the stock is up, down, or flat based on its CSS classes.
+- **Get Prices**: Extract price associated with the stock.
+- **Get Precentage**: Extract precentage data associated with the stock.
+- **Stock Info**: Get Price, Precentage and State of the stock in a python dictionary.
 
 ## Installation
 
@@ -32,13 +32,13 @@ UzmanParaScraper is a Python-based web scraper designed to extract stock data fr
     ```
 2. Create an instance of the scraper with the desired stock name:
     ```python
-    scraper = UzmanParaScraper('AEFES')
+    ups = UzmanParaScraper('AEFES')
     ```
 3. Use the available methods to retrieve data:
     ```python
-    classes = ups.find_all_classes()
-    ids = ups.find_all_ids()
-    state = ups.find_stock_state()
+    price = ups.get_price()
+    precentage = ups.get_precentage()
+    stock_dict = ups.stock_info()
     ```
 
 ## Lack of BIST100 API
