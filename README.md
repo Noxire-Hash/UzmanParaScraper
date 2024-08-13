@@ -29,11 +29,11 @@ UzmanParaScraper is a Python-based web scraper designed to extract stock data fr
 
 1. Import the [`UzmanParaScraper`](command:_github.copilot.openSymbolFromReferences?%5B%22UzmanParaScraper%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22e%3A%5C%5CUzmanParaScraper%5C%5CUzmanParaScraper.py%22%2C%22_sep%22%3A1%2C%22external%22%3A%22file%3A%2F%2F%2Fe%253A%2FUzmanParaScraper%2FUzmanParaScraper.py%22%2C%22path%22%3A%22%2FE%3A%2FUzmanParaScraper%2FUzmanParaScraper.py%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A4%2C%22character%22%3A6%7D%7D%5D%5D "Go to definition") class:
    ```python
-   from UzmanParaScraper import UzmanParaScraper
+   from UzmanParaScraper import UPSCORE
    ```
 2. Create an instance of the scraper with the desired stock name:
    ```python
-   ups = UzmanParaScraper('AEFES')
+   ups = UPSCORE('AEFES')
    ```
 3. Use the available methods to retrieve data:
    ```python
