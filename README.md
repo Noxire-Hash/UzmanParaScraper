@@ -8,38 +8,40 @@ UzmanParaScraper is a Python-based web scraper designed to extract stock data fr
 - **Get Prices**: Extract price associated with the stock.
 - **Get Precentage**: Extract precentage data associated with the stock.
 - **Stock Info**: Get Price, Precentage and State of the stock in a python dictionary.
+- **Goto Stock**: Ability to go to the stock page for more detailed and tailord scraping.
 
 ## Installation
 
 1. Clone the repository:
-    ```sh
-    git clone https://github.com/yourusername/UzmanParaScraper.git
-    ```
+   ```sh
+   git clone https://github.com/yourusername/UzmanParaScraper.git
+   ```
 2. Navigate to the project directory:
-    ```sh
-    cd UzmanParaScraper
-    ```
+   ```sh
+   cd UzmanParaScraper
+   ```
 3. Install the required dependencies:
-    ```sh
-    pip install -r requirements.txt
-    ```
+   ```sh
+   pip install -r requirements.txt
+   ```
 
 ## Usage
 
 1. Import the [`UzmanParaScraper`](command:_github.copilot.openSymbolFromReferences?%5B%22UzmanParaScraper%22%2C%5B%7B%22uri%22%3A%7B%22%24mid%22%3A1%2C%22fsPath%22%3A%22e%3A%5C%5CUzmanParaScraper%5C%5CUzmanParaScraper.py%22%2C%22_sep%22%3A1%2C%22external%22%3A%22file%3A%2F%2F%2Fe%253A%2FUzmanParaScraper%2FUzmanParaScraper.py%22%2C%22path%22%3A%22%2FE%3A%2FUzmanParaScraper%2FUzmanParaScraper.py%22%2C%22scheme%22%3A%22file%22%7D%2C%22pos%22%3A%7B%22line%22%3A4%2C%22character%22%3A6%7D%7D%5D%5D "Go to definition") class:
-    ```python
-    from UzmanParaScraper import UzmanParaScraper
-    ```
+   ```python
+   from UzmanParaScraper import UzmanParaScraper
+   ```
 2. Create an instance of the scraper with the desired stock name:
-    ```python
-    ups = UzmanParaScraper('AEFES')
-    ```
+   ```python
+   ups = UzmanParaScraper('AEFES')
+   ```
 3. Use the available methods to retrieve data:
-    ```python
-    price = ups.get_price()
-    precentage = ups.get_precentage()
-    stock_dict = ups.stock_info()
-    ```
+   ```python
+   price = ups.get_price()
+   precentage = ups.get_precentage()
+   stock_dict = ups.stock_info()
+   soup_stock_page = ups.goto_stock()
+   ```
 
 ## Lack of BIST100 API
 

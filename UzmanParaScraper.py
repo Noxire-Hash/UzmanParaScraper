@@ -6,9 +6,13 @@ class UzmanParaScraper:
     "This is a scraper for UzmanPara you need to provide a stock name to get the data example: user_stock='AEFES'"
 
     def __init__(self, user_stock: str):
-        soup = BeautifulSoup(requests.get(
-            'https://uzmanpara.milliyet.com.tr/canli-borsa/').content, 'html.parser')
-        self.user_stock = soup.find(class_="zebra", id=f"h_tr_id_{user_stock}")
+        self.endpoint = 'https://uzmanpara.milliyet.com.tr'
+
+        soup_bist100 = BeautifulSoup(requests.get(
+            f"{self.endpoint}/canli-borsa/bist-100-hisseleri/").content, 'html.parser')
+
+        self.user_stock = soup_bist100.find(
+            class_="zebra", id=f"h_tr_id_{user_stock}")
         self.classes = set()
         self.ids = set()
         self.state = "null"
@@ -70,11 +74,13 @@ class UzmanParaScraper:
         else:
             return "Price not found"
 
-    def create_dump(self, func):
-        """Creates a dump file with the data"""
-        data = func()
-        open("dump.txt", "w").write(data)
-        return data
+    def get_href(self):
+        """Returns the href of the stock"""
+        if self.user_stock:
+            a_tag = self.user_stock.find('a', href=True)
+            if a_tag:
+                return a_tag['href']
+        return "Href not found"
 
     def get_precentage(self):
         """Returns the precentage of the stock"""
@@ -99,7 +105,19 @@ class UzmanParaScraper:
         stock_info = self.stock_info()
         return f"Stock Name: {stock_info['stock_name']}\nPrice: {stock_info['price']} TL\nPrecentage: {stock_info['precentage']}%\nState: {stock_info['state']}"
 
+    def create_dump(self, func):
+        """Creates a dump file with the data"""
+        data = func()
+        open("dump.txt", "w").write(data)
+        return data
 
-ups = UzmanParaScraper(user_stock="ALARK")
-
-print(type(ups.stock_info()))
+    def goto_stock(self):
+        """Opens the stock page"""
+        href = self.get_href()
+        if href:
+            soup_stock_page = BeautifulSoup(requests.get(
+                f"{self.endpoint}{href}").content, 'html.parser')
+            self.user_stock_page = soup_stock_page
+            return self.user_stock_page
+        else:
+            return "Href not found"
