@@ -33,7 +33,7 @@ UzmanParaScraper is a Python-based web scraper designed to extract stock data fr
    ```
 2. Create an instance of the scraper with the desired stock name:
    ```python
-   ups = UzmanParaScraper('AEFES')
+   ups = UPSCORE('AEFES')
    ```
 3. Use the available methods to retrieve data:
    ```python
