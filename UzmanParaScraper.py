@@ -122,3 +122,36 @@ class UPSCORE:
             return self.user_stock_page
         else:
             return "Href not found"
+
+    def get_general_info(self):
+        soup = self.goto_stock()
+        soup.find_all("div", class_="currency")
+        tr = soup.find_all("tr")
+        print(tr)
+        currency_td = tr.find_all("td", class_="currency")
+        value_td = tr.find_all("td", class_="value")
+        print(currency_td, value_td)
+
+    def get_technic_analysis(self):
+        pass
+
+    def get_basic_analysis(self):
+        pass
+
+    def get_page_data(self):
+        soup = self.goto_stock()
+        data = {}
+        for tr in soup.find_all('tr'):
+            currency_td = tr.find('td', class_='currency')
+            value_tds = tr.find_all('td', class_='right')
+
+            if currency_td and value_tds:
+                currency_name = currency_td.get_text(strip=True)
+                currency_values = [td.get_text(strip=True) for td in value_tds]
+                if len(currency_values) == 1:
+                    data[currency_name] = currency_values[0]
+                else:
+                    data[currency_name] = currency_values
+
+        return data
+    pass
